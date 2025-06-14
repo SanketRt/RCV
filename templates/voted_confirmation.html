@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Vote Confirmed{% endblock %}
+{% block content %}
+<h2>Your Vote Has Been Recorded!</h2>
+<p>Thank you for participating in the election. Your preferences are as follows:</p>
+<div class="vote-summary">
+    {# user_vote is expected to be a dictionary like {"1. Preference": "Candidate A", "3. Preference": "Candidate C"} #}
+    {% if user_vote %}
+        {# Sort the items by the preference number (e.g., "1. Preference" comes before "2. Preference") #}
+        {% set sorted_preferences = user_vote.items() | sort(attribute='0', case_sensitive=true) %}
+        {% for rank_str, candidate in sorted_preferences %}
+            <p><strong>{{ rank_str }}:</strong> {{ candidate }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No vote preferences found. (This might happen if you navigated directly here.)</p>
+    {% endif %}
+</div>
+<p><a href="/">Go back to Home</a></p>
+{% endblock %}
