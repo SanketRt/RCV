@@ -58,3 +58,70 @@ Install dependencies with:
 
 ```bash
 pip install Flask
+
+```
+## Project Layout
+
+```text
+.
+├── auth_app.py              # Flask app: login/register/logout + placeholder vote
+├── vote_app.py              # Flask app: full ranked-choice voting module
+├── run_app.py               # Entry point that wires together auth_app.py and vote_app.py
+├── templates/
+│   ├── base.html
+│   ├── login.html
+│   ├── register.html
+│   ├── vote.html
+│   └── voted_confirmation.html
+├── static/
+│   └── style.css
+├── rcv_cli.py               # CLI RCV simulator (init_db, add_ballot, fetch_ballots)
+├── ballots.db               # SQLite database for CLI simulator (auto-generated)
+├── rcv_winner.py            # RCV elimination-style tally function
+└── first_choice_count.py    # Simple plurality (first-choice) tally function
+
+
+
+```
+---
+
+## Installation
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/youruser/rcv-system.git
+   cd rcv-system
+   ```
+2. **Create a virtual environment & install dependencies**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install Flask
+   ```
+---
+
+## Usage
+
+### 1. Web Application
+
+#### Authentication & Placeholder Vote
+
+```bash
+export FLASK_APP=auth_app.py
+export FLASK_ENV=development
+flask run
+```
+Visit `http://127.0.0.1:5000`
+
+Register a new account, log in, then land on the placeholder vote page.
+
+#### Full RCV Voting Module
+
+```bash
+export FLASK_APP=vote_app.py
+export FLASK_ENV=development
+flask run
+```
+
+
+
