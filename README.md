@@ -87,7 +87,7 @@ pip install Flask
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/youruser/rcv-system.git
+   git clone https://github.com/SanketRt/RCV.git
    cd rcv-system
    ```
 
